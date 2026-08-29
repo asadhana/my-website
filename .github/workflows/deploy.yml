@@ -42,4 +42,5 @@ jobs:
           if [ -z "$TARGET_PATH" ]; then TARGET_PATH="$REMOTE_PATH"; fi
           if [ -z "$TARGET_PATH" ]; then echo "REMOTE_PATH not set and no input provided; aborting." && exit 1; fi
           echo "Deploying html/ -> ${REMOTE_USER}@${REMOTE_HOST}:${TARGET_PATH} (port $PORT)"
-          rsync -avz --chmod=u+w --exclude='.git' --exclude='.github' --exclude='html/wp-config.php' -e "ssh -p $PORT" ./html/ ${REMOTE_USER}@${REMOTE_HOST}:"${TARGET_PATH}"
+          rsync -avz --exclude='.git' --exclude='.github' --exclude='html/wp-config.php' --exclude='html/wp-content/uploads/' -e "ssh -p $PORT" ./html/ ${REMOTE_USER}@${REMOTE_HOST}:"${TARGET_PATH}"
+          
