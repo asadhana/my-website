@@ -1,0 +1,9 @@
+# Live secrets — present only on the Virtual_Machine, never committed
+wp-config.php
+
+# User-generated media — managed via WordPress Admin, stored in DB/filesystem, not code
+wp-content/uploads/
+
+# Common local/build noise
+*.log
+.DS_Store
