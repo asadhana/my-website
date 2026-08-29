@@ -37,15 +37,11 @@ jobs:
           REMOTE_PATH: ${{ secrets.REMOTE_PATH }}
         run: |
           set -e
-          # Use REMOTE_PORT or default 22
           PORT=${REMOTE_PORT:-22}
-          # Allow workflow_dispatch input to override default remote path
           TARGET_PATH="${{ github.event.inputs.deploy_path }}"
           if [ -z "$TARGET_PATH" ]; then TARGET_PATH="$REMOTE_PATH"; fi
           if [ -z "$TARGET_PATH" ]; then echo "REMOTE_PATH not set and no input provided; aborting." && exit 1; fi
           echo "Deploying html/ -> ${REMOTE_USER}@${REMOTE_HOST}:${TARGET_PATH} (port $PORT)"
-          # Sync only the html/ directory contents. Exclude wp-config.php and uploads if desired.
-          # Use --delete to mirror; remove if you don't want deletions.
           rsync -avz --delete --exclude='.git' --exclude='.github' --exclude='html/wp-config.php' -e "ssh -p $PORT" ./html/ ${REMOTE_USER}@${REMOTE_HOST}:"${TARGET_PATH}"
 
       - name: Optional: Run post-deploy commands on server
