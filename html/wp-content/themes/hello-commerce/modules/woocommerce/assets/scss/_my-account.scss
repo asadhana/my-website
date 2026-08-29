@@ -1,0 +1,132 @@
+@use "./variables" as variables;
+
+.woocommerce-account {
+
+	& .woocommerce-MyAccount-content {
+		width: 65%;
+
+		& table.woocommerce-MyAccount-orders,
+		& table.woocommerce-table--order-downloads {
+
+			& tbody > tr:nth-child(even) > th,
+			& tbody > tr:nth-child(even) > td {
+				background-color: variables.$color-grey-50;
+			}
+		}
+
+		& table.woocommerce-table--order-details,
+		& table.woocommerce-table--order-downloads {
+
+			& tbody tr:last-child > td {
+				border-bottom: 2px solid variables.$color-grey-100;
+			}
+
+			& tr > td:last-child,
+			& tr > th:last-child {
+				text-align: right;
+			}
+		}
+	}
+
+	& .woocommerce-customer-details address,
+	& .woocommerce-Address {
+		background-color: variables.$color-grey-50;
+		border-radius: 0;
+		border: 1px solid variables.$color-grey-100;
+		padding: variables.$spacing-18;
+	}
+
+	& .woocommerce-MyAccount-navigation {
+		& ul {
+			display: flex;
+			flex-direction: column;
+			gap: 0;
+			list-style: none;
+			padding: 0;
+		}
+	}
+
+	& .woocommerce-MyAccount-navigation-link {
+		border-bottom: 1px solid variables.$color-grey-100;
+		color: var(--ehc-button-color);
+		padding: 0;
+		
+		& a {
+			display: block;
+			padding-block: var(--ehc-padding-block-start) var(--ehc-padding-block-end);
+			padding-inline: var(--ehc-padding-inline-start) var(--ehc-padding-inline-end);
+			text-decoration: var(--ehc-button-text-decoration);
+		}
+
+		&.is-active {
+			background-color: var(--ehc-button-background-color);
+			border-top-left-radius: var(--ehc-button-border-top-left-radius);
+			border-top-right-radius: var(--ehc-button-border-top-right-radius);
+			border-bottom-left-radius: var(--ehc-button-border-bottom-left-radius);
+			border-bottom-right-radius: var(--ehc-button-border-bottom-right-radius);
+			border: var(--ehc-button-border-width) solid var(--ehc-button-border-color);
+			padding: 0;
+
+			& a {
+				color: inherit;
+			}
+		}
+
+		&::marker {
+			display: none;
+		}
+
+		&::before {
+			content: none;
+		}
+	}
+
+	& .woocommerce-Addresses {
+		display: grid;
+		gap: variables.$spacing-18;
+
+		@media (min-width: variables.$screen-desktop-min) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		& .woocommerce-Address {
+			grid-column: span 1;
+		}
+
+		&::before,
+		&::after {
+			display: none;
+		}
+
+		& .woocommerce-Address {
+			width: auto;
+		}
+
+		& .woocommerce-Address-title a.edit {
+			display: block;
+			float: none;
+			margin-bottom: variables.$spacing-16;
+		}
+	}
+
+	& .woocommerce-EditAccountForm {
+
+		& .woocommerce-form-row {
+			margin-bottom: variables.$spacing-32;
+		}
+
+		& fieldset {
+			border: 1px solid variables.$color-grey-200;
+			margin-bottom: variables.$spacing-32;
+			padding: variables.$spacing-32;
+
+			& .woocommerce-form-row:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		& legend {
+			padding-inline: variables.$spacing-18;
+		}
+	}
+}

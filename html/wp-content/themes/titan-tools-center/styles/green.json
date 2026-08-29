@@ -1,0 +1,63 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "title": "Green",
+  "version": 2,
+  "settings": {
+    "color": {
+        "palette": [
+            {
+                "color": "#1F1F1F",
+                "name": "Contrast",
+                "slug": "contrast"
+            },
+            {
+                "color": "#00bcd4",
+                "name": "Primary",
+                "slug": "primary"
+            },
+            {
+                "color": "#00bcd4",
+                "name": "Secondary",
+                "slug": "secondary"
+            },
+            {
+                "color": "#8bc34a",
+                "name": "Secondary Second",
+                "slug": "secondary-second"
+            },
+            {
+                "color": "#8C8C8C",
+                "name": "Secondary Third",
+                "slug": "secondary-third"
+            },
+            {
+                "color": "#00bcd4",
+                "name": "Secondary Fourth",
+                "slug": "secondary-fourth"
+            },
+            {
+                "color": "#00bcd4",
+                "name": "Tertiary",
+                "slug": "tertiary"
+            },
+            {
+                "color": "#ffffff",
+                "name": "Base",
+                "slug": "base"
+            }
+        ],
+        "gradients": [
+            {
+                "gradient": "linear-gradient(256deg, #8bc34a3b 0%, #00bcd45e 100%)",
+                "name": "Vertical secondary to tertiary",
+                "slug": "vertical-secondary-to-tertiary"
+            },
+            {
+                "gradient": "linear-gradient(115deg, #FFD2E6 0%, #EECF9B 100%)",
+                "name": "Vertical secondary to Fourth",
+                "slug": "vertical-secondary-to-fourth"
+            }
+        ]
+    }
+  }
+}

@@ -1,0 +1,12 @@
+@use "./variables" as variables;
+
+.woocommerce div.product span.price,
+.woocommerce div.product div.summary p.price,
+.woocommerce ul.products li.product .price,
+.woocommerce div.product .stock {
+	color: var(--ehc-price-color);
+}
+
+.woocommerce div.product span.price {
+	margin-bottom: variables.$spacing-18;
+}

@@ -1,0 +1,51 @@
+@use "./variables" as variables;
+
+.woocommerce button.button.alt,
+.woocommerce button.button.alt.disabled,
+.woocommerce ul.products li.product .button,
+.woocommerce #respond input#submit,
+.woocommerce .woocommerce-message .button,
+.woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
+.woocommerce-cart .cart .button,
+.woocommerce button.button,
+.woocommerce-cart .cart .button,
+.woocommerce-cart a.button,
+.woocommerce-account a.button,
+.woocommerce-account a.button.alt,
+.woocommerce-account button.button,
+.woocommerce-account .woocommerce-MyAccount-navigation-link.is-active,
+.woocommerce-checkout button.button.alt,
+/* Target buttons within theme contexts, exclude those inside .elementor-element and WC blocks */
+:is(button, [type=submit], [type=button]):not(:is(.elementor-element *, [class*="wc-block-"] *)),
+/* Include custom button styling for button inside Elementor shortcodes */
+:is(.elementor-element .elementor-shortcode) :where(button, [type=submit], [type=button]) {
+	background-color: var(--ehc-button-background-color);
+	border-top-left-radius: var(--ehc-button-border-top-left-radius);
+	border-top-right-radius: var(--ehc-button-border-top-right-radius);
+	border-bottom-left-radius: var(--ehc-button-border-bottom-left-radius);
+	border-bottom-right-radius: var(--ehc-button-border-bottom-right-radius);
+	border: var(--ehc-button-border-width) solid var(--ehc-button-border-color);
+	color: var(--ehc-button-color);
+	font-size: var(--ehc-button-font-size);
+	font-weight: var(--ehc-button-font-weight);
+	line-height: var(--ehc-button-line-height);
+	text-transform: var(--ehc-button-text-transform);
+	padding-inline: var(--ehc-padding-inline-start) var(--ehc-padding-inline-end);
+	padding-block: var(--ehc-padding-block-start) var(--ehc-padding-block-end);
+	text-decoration: var(--ehc-button-text-decoration);
+	transition: variables.$transition;
+
+	&:hover,
+	&:focus {
+		background-color: var(--ehc-button-background-color-hover);
+		color: var(--ehc-button-color-hover);
+		transition: variables.$transition;
+	}
+
+	&:disabled,
+	&[disabled] {
+		background-color: variables.$color-grey-100;
+		padding-inline: var(--ehc-padding-inline-start) var(--ehc-padding-inline-end);
+		padding-block: var(--ehc-padding-block-start) var(--ehc-padding-block-end);
+	}
+}
