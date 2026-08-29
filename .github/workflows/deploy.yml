@@ -43,14 +43,3 @@ jobs:
           if [ -z "$TARGET_PATH" ]; then echo "REMOTE_PATH not set and no input provided; aborting." && exit 1; fi
           echo "Deploying html/ -> ${REMOTE_USER}@${REMOTE_HOST}:${TARGET_PATH} (port $PORT)"
           rsync -avz --delete --exclude='.git' --exclude='.github' --exclude='html/wp-config.php' -e "ssh -p $PORT" ./html/ ${REMOTE_USER}@${REMOTE_HOST}:"${TARGET_PATH}"
-
-      - name: Optional: Run post-deploy commands on server
-        if: ${{ secrets.POST_DEPLOY_COMMANDS != '#' }}
-        env:
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
-        run: |
-          PORT=${REMOTE_PORT:-22}
-          echo "Running POST_DEPLOY_COMMANDS on ${REMOTE_HOST}"
-          ssh -p "$PORT" ${REMOTE_USER}@${REMOTE_HOST} "${{ secrets.POST_DEPLOY_COMMANDS }}"
