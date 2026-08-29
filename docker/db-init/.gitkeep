@@ -1,0 +1,3 @@
+# Place a DB dump here (*.sql or *.sql.gz) to seed MariaDB on first start.
+# Example: fetch the latest S3 backup with ./scripts/fetch-latest-backup.sh
+# Dump files themselves are git-ignored (see .gitignore).
