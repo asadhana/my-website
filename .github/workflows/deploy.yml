@@ -1,0 +1,26 @@
+name: Deploy to Virtual_Machine
+on:
+  push:
+    branches: [ main ]
+
+concurrency:
+  group: deploy-main        # serialize deploys; never overlap
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Load deploy key into ssh-agent
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_SSH_KEY }}
+
+      - name: Run deployment
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+        run: bash scripts/deploy.sh
