@@ -1,0 +1,60 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "c7835049a1679de286f7a9cb1e8389d5",
+    "packages": [
+        {
+            "name": "collizo4sky/persist-admin-notices-dismissal",
+            "version": "1.4.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/w3guy/persist-admin-notices-dismissal.git",
+                "reference": "163b868c98cf97ea15b4d7e1305e2d52c9242e7e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/w3guy/persist-admin-notices-dismissal/zipball/163b868c98cf97ea15b4d7e1305e2d52c9242e7e",
+                "reference": "163b868c98cf97ea15b4d7e1305e2d52c9242e7e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "persist-admin-notices-dismissal.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Collins Agbonghama",
+                    "email": "me@w3guy.com",
+                    "role": "developer"
+                }
+            ],
+            "description": "Simple library to persist dismissal of admin notices across pages in WordPress dashboard.",
+            "support": {
+                "issues": "https://github.com/w3guy/persist-admin-notices-dismissal/issues",
+                "source": "https://github.com/w3guy/persist-admin-notices-dismissal"
+            },
+            "time": "2024-03-10T15:11:42+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
+}

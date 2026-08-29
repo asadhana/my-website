@@ -1,0 +1,30 @@
+/**
+ * Searchform
+ */
+
+.search-form {
+	position: relative;
+	max-width: 294px;
+
+	label {
+		width: 100%;
+	}
+
+	.search-field {
+		padding-inline-start: 2.5rem;
+	}
+
+	.search-submit {
+		color: unset;
+		border: unset;
+		position: absolute;
+		inset-inline-start: -0.25rem;
+		top: 0.1rem;
+
+		&:hover,
+		&:focus {
+			color: unset;
+			background-color: unset;
+		}
+	}
+}

@@ -1,0 +1,41 @@
+@use "sass:color";
+@use "./variables" as variables;
+
+.woocommerce-message,
+.woocommerce-info,
+.woocommerce-error {
+	background-color: var(--ehc-notice-background-color);
+	border: 1px solid var(--ehc-notice-color);
+	color: variables.$color-black;
+}
+
+.woocommerce-error {
+	--ehc-notice-color: #{variables.$color-error};
+	--ehc-notice-background-color: #{color.scale(variables.$color-error, $lightness: 80%)};
+}
+
+.woocommerce-message {
+	--ehc-notice-color: #{variables.$color-success};
+	--ehc-notice-background-color: #{color.scale(variables.$color-success, $lightness: 80%)};
+}
+
+.woocommerce-info {
+	--ehc-notice-color: #{variables.$color-info};
+	--ehc-notice-background-color: #{color.scale(variables.$color-info, $lightness: 80%)};
+}
+
+.woocommerce-message,
+.woocommerce-info {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+
+	&::after {
+		display: none;
+	}
+
+	&::before {
+		top: 50%;
+		transform: translateY(-50%);
+	}
+}
