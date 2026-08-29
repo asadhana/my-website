@@ -1,4 +1,4 @@
-name: Deploy to Ubuntu Server
+name: Deploy the Wordpress site to Ubuntu Server
 
 on:
   workflow_dispatch:
