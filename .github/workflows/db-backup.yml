@@ -1,0 +1,197 @@
+name: Backup zixhr.com MariaDB to S3
+
+# Backs up the live WordPress MariaDB database AND key config files
+# (WordPress admin file(s) + /etc/nginx/nginx.conf) from the host server and
+# uploads them to S3, so they can be restored locally via the Docker dev stack
+# (see docker/ and DEV.md).
+#
+# Reuses the SAME SSH secrets as .github/workflows/deploy.yml:
+#   - SSH_PRIVATE_KEY, REMOTE_HOST, REMOTE_USER, REMOTE_PORT
+# DB credentials are read directly from the live html wp-config.php on the
+# server, so there are no duplicate DB secrets to keep in sync.
+#
+# Additional secrets required for the S3 upload:
+#   - AWS_ACCESS_KEY_ID
+#   - AWS_SECRET_ACCESS_KEY
+#   - AWS_REGION            (e.g. us-east-1)
+#   - S3_BACKUP_BUCKET      (bucket name only, e.g. my-zixhr-backups)
+# Optional:
+#   - REMOTE_WP_PATH        (path to WordPress root on server that holds
+#                            wp-config.php; falls back to REMOTE_PATH)
+
+on:
+  workflow_dispatch:
+    inputs:
+      retain_local_artifact:
+        description: 'Also attach the dump as a workflow artifact (true/false)'
+        required: false
+        default: 'false'
+  schedule:
+    # Daily at 02:30 UTC. Remove if you only want manual runs.
+    - cron: '30 2 * * *'
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup SSH agent
+        uses: webfactory/ssh-agent@v0.10.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Add remote host to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          touch ~/.ssh/known_hosts
+          PORT=${{ secrets.REMOTE_PORT }}
+          if [ -z "$PORT" ]; then PORT=22; fi
+          ssh-keyscan -p "$PORT" -H "${{ secrets.REMOTE_HOST }}" >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+
+      - name: Dump MariaDB on the server and stream the gzip back
+        id: dump
+        env:
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
+          REMOTE_PATH: ${{ secrets.REMOTE_PATH }}
+          REMOTE_WP_PATH: ${{ secrets.REMOTE_WP_PATH }}
+        run: |
+          set -euo pipefail
+          PORT=${REMOTE_PORT:-22}
+          WP_PATH="${REMOTE_WP_PATH:-$REMOTE_PATH}"
+          if [ -z "$WP_PATH" ]; then
+            echo "Neither REMOTE_WP_PATH nor REMOTE_PATH is set; aborting." >&2
+            exit 1
+          fi
+
+          DATE="$(date -u +%Y-%m-%d)"
+          STAMP="$(date -u +%Y-%m-%dT%H%M%SZ)"
+          OUT="zixhr-db-${STAMP}.sql.gz"
+          echo "date=${DATE}"  >> "$GITHUB_OUTPUT"
+          echo "file=${OUT}"   >> "$GITHUB_OUTPUT"
+
+          # Remote script: read DB creds from wp-config.php, then mysqldump.
+          # We parse the four DB_* defines with sed so we never store DB
+          # credentials as GitHub secrets. Values are passed to mysqldump via
+          # a temporary defaults-file to keep them off the process list.
+          #
+          # NOTE: uses `mariadb-dump` if present, else falls back to `mysqldump`.
+          REMOTE_SCRIPT='
+            set -eu
+            CFG="'"$WP_PATH"'/wp-config.php"
+            if [ ! -f "$CFG" ]; then echo "wp-config.php not found at $CFG" >&2; exit 1; fi
+            get() { sed -n "s/.*define(\s*[\x27\"]"$1"[\x27\"]\s*,\s*[\x27\"]\(.*\)[\x27\"]\s*).*/\1/p" "$CFG" | head -n1; }
+            DB_NAME=$(get DB_NAME)
+            DB_USER=$(get DB_USER)
+            DB_PASSWORD=$(get DB_PASSWORD)
+            DB_HOST=$(get DB_HOST)
+            [ -z "$DB_HOST" ] && DB_HOST=localhost
+            TMPCNF=$(mktemp)
+            trap "rm -f $TMPCNF" EXIT
+            printf "[client]\nuser=%s\npassword=%s\nhost=%s\n" "$DB_USER" "$DB_PASSWORD" "$DB_HOST" > "$TMPCNF"
+            if command -v mariadb-dump >/dev/null 2>&1; then DUMP=mariadb-dump; else DUMP=mysqldump; fi
+            "$DUMP" --defaults-extra-file="$TMPCNF" \
+              --single-transaction --quick --routines --triggers --events \
+              --default-character-set=utf8mb4 --no-tablespaces "$DB_NAME" | gzip -c
+          '
+
+          echo "Connecting to ${REMOTE_USER}@${REMOTE_HOST}:${PORT} and dumping DB from ${WP_PATH}"
+          ssh -p "$PORT" "${REMOTE_USER}@${REMOTE_HOST}" "bash -s" <<< "$REMOTE_SCRIPT" > "$OUT"
+
+          if [ ! -s "$OUT" ]; then
+            echo "Backup file is empty; dump likely failed." >&2
+            exit 1
+          fi
+          echo "Backup written: $OUT ($(du -h "$OUT" | cut -f1))"
+
+      - name: Back up config files (wp-admin.php + nginx.conf) from the server
+        id: config
+        env:
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
+          REMOTE_PATH: ${{ secrets.REMOTE_PATH }}
+          REMOTE_WP_PATH: ${{ secrets.REMOTE_WP_PATH }}
+        run: |
+          set -euo pipefail
+          PORT=${REMOTE_PORT:-22}
+          WP_PATH="${REMOTE_WP_PATH:-$REMOTE_PATH}"
+          STAMP="$(date -u +%Y-%m-%dT%H%M%SZ)"
+          OUT="zixhr-config-${STAMP}.tar.gz"
+          echo "file=${OUT}" >> "$GITHUB_OUTPUT"
+
+          # Tar the requested config files on the server and stream back.
+          # Includes the WordPress admin file(s) and the nginx main config.
+          # Missing paths are skipped with a warning rather than failing.
+          REMOTE_SCRIPT='
+            set -eu
+            WP_PATH="'"$WP_PATH"'"
+            TMPD=$(mktemp -d)
+            trap "rm -rf $TMPD" EXIT
+            # WordPress admin file(s): copy wp-admin.php if it exists, plus the
+            # wp-admin/ directory index files that make up the admin entrypoint.
+            for f in "$WP_PATH/wp-admin.php" "$WP_PATH/wp-admin/index.php" "$WP_PATH/wp-admin/admin.php" "$WP_PATH/wp-login.php"; do
+              if [ -f "$f" ]; then
+                DEST="$TMPD/html/$(echo "$f" | sed "s#^$WP_PATH/##")"
+                mkdir -p "$(dirname "$DEST")"
+                cp "$f" "$DEST"
+              else
+                echo "warn: $f not found, skipping" >&2
+              fi
+            done
+            # nginx main config.
+            if [ -f /etc/nginx/nginx.conf ]; then
+              mkdir -p "$TMPD/etc/nginx"
+              cp /etc/nginx/nginx.conf "$TMPD/etc/nginx/nginx.conf"
+            else
+              echo "warn: /etc/nginx/nginx.conf not found, skipping" >&2
+            fi
+            tar -C "$TMPD" -czf - .
+          '
+          echo "Collecting config files from ${REMOTE_USER}@${REMOTE_HOST}:${PORT}"
+          ssh -p "$PORT" "${REMOTE_USER}@${REMOTE_HOST}" "bash -s" <<< "$REMOTE_SCRIPT" > "$OUT"
+
+          if [ ! -s "$OUT" ]; then
+            echo "Config archive is empty; nothing was collected." >&2
+            exit 1
+          fi
+          echo "Config archive written: $OUT ($(du -h "$OUT" | cut -f1))"
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Upload backups to S3
+        env:
+          BUCKET: ${{ secrets.S3_BACKUP_BUCKET }}
+        run: |
+          set -euo pipefail
+          DATE="${{ steps.dump.outputs.date }}"
+          DB_FILE="${{ steps.dump.outputs.file }}"
+          CFG_FILE="${{ steps.config.outputs.file }}"
+          BASE="s3://${BUCKET}/zixhr.com/backups/db/d${DATE}"
+
+          echo "Uploading ${DB_FILE} -> ${BASE}/${DB_FILE}"
+          aws s3 cp "$DB_FILE" "${BASE}/${DB_FILE}" --only-show-errors
+
+          echo "Uploading ${CFG_FILE} -> ${BASE}/${CFG_FILE}"
+          aws s3 cp "$CFG_FILE" "${BASE}/${CFG_FILE}" --only-show-errors
+
+          echo "Done. Backups stored under ${BASE}/"
+
+      - name: Attach backups as workflow artifacts (optional)
+        if: ${{ github.event.inputs.retain_local_artifact == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: zixhr-backup-${{ steps.dump.outputs.date }}
+          path: |
+            ${{ steps.dump.outputs.file }}
+            ${{ steps.config.outputs.file }}
+          retention-days: 7
