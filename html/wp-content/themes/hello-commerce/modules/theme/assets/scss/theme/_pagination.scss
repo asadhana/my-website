@@ -1,0 +1,29 @@
+/**
+ * Pagination
+ */
+
+@use "../reset/variables" as variables;
+
+.ehp-pagination {
+	.nav-links {
+		display: flex;
+	}
+	.page-numbers {
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		min-width: 40px;
+		height: 40px;
+		text-decoration: none;
+
+		&.current {
+			border-radius: 4px;
+			background: variables.$purple;
+			color: #fff;
+		}
+		.meta-nav {
+			display: inline-flex;
+			align-items: center;
+		}
+	}
+}

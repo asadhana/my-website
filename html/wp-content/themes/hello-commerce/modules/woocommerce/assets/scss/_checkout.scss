@@ -1,0 +1,240 @@
+@use "./variables" as variables;
+
+.woocommerce-checkout {
+
+	& .checkout {
+
+		@media (min-width: variables.$screen-desktop-min) {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: auto 1fr;
+			grid-template-areas:
+			"left right1"
+			"left right2";
+			column-gap: variables.$spacing-64;
+			row-gap: 0;
+	
+			& .woocommerce-billing-fields,
+			& #customer_details {
+				grid-area: left;
+	
+				&::before {
+					display: none;
+				}
+			}
+	
+			& #order_review_heading {
+				grid-area: right1;
+				margin-bottom: variables.$spacing-32;
+			}
+	
+			& #order_review {
+				grid-area: right2;
+			}
+	
+			#customer_details {
+				display: flex;
+				flex-direction: column;
+				gap: variables.$spacing-32;
+			}
+		
+			& .col2-set .col-1,
+			& .col2-set .col-2 {
+				width: 100%;
+			}
+		}
+	
+		& .form-row .required {
+			color: variables.$color-red;
+		}
+	
+		& .form-row.woocommerce-invalid {
+			& input.input-text {
+				border-color: variables.$color-error;
+			}
+	
+			& label,
+			& .required {
+				color: variables.$color-error;
+			}
+		}
+	
+		& input.input-text,
+		& .select2-container .select2-selection,
+		& .form-row .input-text {
+			border-radius: 0;
+		}
+	
+		& textarea {
+			resize: none;
+		}
+	
+		& table.shop_table {
+			& .product-total {
+				text-align: right;
+			}
+
+			& > tfoot {
+
+				& > tr:first-child {
+					border-top: 2px solid variables.$color-grey-100;
+				}
+
+				& > tr > td {
+					font-weight: variables.$font-weight-700;
+					text-align: right;
+				}
+			}
+		}
+
+		#payment {
+			background: none;
+
+			& .wc_payment_methods.methods.payment_methods {
+				padding: 0;
+			}
+
+			& .woocommerce-info {
+				background-color: variables.$color-grey-50;
+				border: 0;
+				color: variables.$color-black;
+				font-size: variables.$font-size-12;
+				line-height: variables.$font-size-18;
+				padding: variables.$spacing-18;
+
+				&::before {
+					display: none;
+				}
+			}
+
+			#place_order {
+				float: unset;
+				margin-top: variables.$spacing-32;
+				width: 100%;
+			}
+
+			& .form-row.place-order {
+				padding: variables.$spacing-24 0 0 0;
+			}
+
+			& div.payment_box {
+				background-color: variables.$color-grey-50;
+
+				&::before {
+					content: "";
+					display: block;
+					border: 1em solid variables.$color-grey-50;
+					border-right-color: transparent;
+					border-left-color: transparent;
+					border-top-color: transparent;
+					position: absolute;
+					top: -.75em;
+					left: 0;
+					margin: -1em 0 0 2em;
+				}
+			}
+		}
+	}
+
+	& .woocommerce-form-coupon-toggle .woocommerce-info {
+		background-color: variables.$color-grey-50;
+		border: 0;
+		color: variables.$color-black;
+		padding: variables.$spacing-18;
+	
+		&::before {
+			display: none;
+		}
+	}
+
+	& form.checkout_coupon {
+		background-color: variables.$color-grey-50;
+		border: 0;
+		border-radius: 0;
+		display: flex;
+		gap: variables.$spacing-18;
+		margin: calc(variables.$spacing-32 * -1) 0 variables.$spacing-32 0;
+		padding: variables.$spacing-18;
+	
+		& .form-row {
+			margin: 0;
+			padding: 0;
+		}
+	
+		& .form-row-first {
+			width: 25%;
+		}
+	
+		& .form-row .input-text {
+			border-radius: 0;
+			height: 100%;
+	
+			&.has-error {
+				border-color: variables.$color-error;
+			}
+		}
+	
+		& .coupon-error-notice {
+			display: flex;
+		}
+	}
+
+	&.woocommerce-order-received {
+
+		& table.order_details {
+
+			& tbody > tr:last-child > td {
+				border-bottom: 2px solid variables.$color-grey-100;
+			}
+
+			& tr > td:last-child,
+			& tr > th:last-child {
+				text-align: right;
+			}
+		}
+
+		& .woocommerce-notice--success {
+			font-size: variables.$font-size-48;
+		}
+
+		& ul.order_details {
+			background-color: variables.$color-grey-50;
+			display: grid;
+			grid-template-columns: repeat(5, auto);
+			gap: 0;
+			padding: variables.$spacing-18;
+
+			&::before,
+			&::after {
+				display: none;
+			}
+
+			& li {
+				display: flex;
+				flex-direction: column;
+				float: none;
+				margin: 0;
+				padding-inline: variables.$spacing-18;
+
+				&:not(:last-child) {
+					border-right: 1px dashed variables.$color-grey-100;
+				}
+
+				&:first-child {
+					padding-left: 0;
+				}
+
+				&:last-child {
+					padding-right: 0;
+				}
+			}
+		}
+
+		& .woocommerce-customer-details address {
+			background-color: variables.$color-grey-50;
+			border-radius: 0;
+			border: 1px solid variables.$color-grey-100;
+			padding: variables.$spacing-18;
+		}
+	}
+}

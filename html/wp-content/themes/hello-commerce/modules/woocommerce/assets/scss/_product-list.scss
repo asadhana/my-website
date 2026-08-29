@@ -1,0 +1,32 @@
+@use "./variables" as variables;
+
+.woocommerce ul.products {
+
+    & li.product {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+
+        & a img {
+            border: 1px solid variables.$color-grey-100;
+        }
+
+        & .button {
+            margin: 0;
+        }
+    }
+
+    & a.woocommerce-loop-product__link {
+        flex-grow: 1;
+        position: relative;
+
+        & span.onsale {
+            left: unset;
+            margin: 0;
+            right: 0;
+            top: variables.$spacing-10;
+            position: absolute;
+        }
+    }
+}

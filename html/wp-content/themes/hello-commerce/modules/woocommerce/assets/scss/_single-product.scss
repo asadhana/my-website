@@ -1,0 +1,118 @@
+@use "./variables" as variables;
+
+.woocommerce {
+
+	& .woocommerce-product-gallery {
+		border: 1px solid variables.$color-grey-100;
+	}
+
+	& .woocommerce-breadcrumb {
+		color: variables.$color-grey-200;
+		font-weight: variables.$font-weight-400;
+		font-size: variables.$font-size-16;
+		line-height: variables.$font-size-22;
+		letter-spacing: 0;
+		margin-bottom: variables.$spacing-10;
+	}
+
+	& div.product div.images {
+		margin-bottom: variables.$spacing-64;
+	}
+
+	& .woocommerce-breadcrumb {
+		color: variables.$color-grey-200;
+		font-weight: variables.$font-weight-400;
+		font-size: variables.$font-size-16;
+		line-height: variables.$font-size-22;
+		letter-spacing: 0;
+		margin-bottom: variables.$spacing-10;
+	}
+
+	& div.product .product_title,
+	& .woocommerce-loop-product__title {
+		color: variables.$color-black;
+		font-size: variables.$font-size-32;
+		font-weight: variables.$font-weight-400;
+		line-height: variables.$font-size-34;
+	}
+
+	& div.product .product_title {
+		margin-bottom: variables.$spacing-18;
+	}
+
+	& .woocommerce-product-details__short-description {
+		color: variables.$color-black;
+		font-size: variables.$font-size-16;
+		font-weight: variables.$font-weight-400;
+		line-height: variables.$font-size-22;
+		margin-bottom: variables.$spacing-32;
+	}
+
+	& div.product form.cart {
+		margin-bottom: variables.$spacing-32;
+	}
+
+	& .product_meta {
+		color: variables.$color-black;
+		display: flex;
+		flex-direction: column;
+		font-size: variables.$font-size-16;
+		font-weight: variables.$font-weight-400;
+		line-height: variables.$font-size-22;
+		gap: variables.$spacing-10;
+	}
+
+	& div.product form.cart div.quantity {
+		margin-inline-end: variables.$spacing-18;
+	}
+
+	& .qty[type="number"] {
+		border-radius: 0;
+		padding: variables.$spacing-8 variables.$spacing-12;
+	}
+
+	& div.product form.cart .variations {
+		& label {
+			font-weight: variables.$font-weight-400;
+		}
+
+		& th {
+			vertical-align: middle;
+		}
+	}
+
+	& table {
+		& th {
+			text-align: left;
+		}
+	}
+
+	& tbody > tr:nth-child(odd) > th,
+	& tbody > tr:nth-child(odd) > td {
+		background-color: variables.$color-grey-50;
+	}
+
+	& tbody > tr:nth-child(even) > th,
+	& tbody > tr:nth-child(even) > td {
+		background-color: variables.$color-white;
+	}
+
+	& .woocommerce-variation-price {
+		margin-bottom: variables.$spacing-18;
+	}
+
+	& td.value {
+		position: relative;
+	}
+
+	& .reset_variations {
+		display: none;
+		
+		&[style="visibility: visible;"] {
+			display: block;
+			position: absolute;
+			right: 15px;
+			top: 100%;
+		}
+	}
+}

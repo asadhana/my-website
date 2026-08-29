@@ -1,0 +1,56 @@
+<?php
+
+/**
+ * Provide a admin area view for the plugin
+ *
+ * This file is used to markup the add-ons listing related to this plugin.
+ *
+ * @link       https://www.madebytribe.com
+ * @since      1.0.0
+ *
+ * @package    Caddy
+ * @subpackage Caddy/admin/partials
+ */
+
+if ( ! current_user_can( 'manage_options' ) ) {
+	wp_die( esc_html__( 'You do not have sufficient permissions to access this page.', 'caddy' ) );
+}
+
+// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reading URL parameter to determine which tab to display
+$addon_tab = ( ! empty( $_GET['tab'] ) ) ? esc_attr( sanitize_text_field(wp_unslash($_GET['tab'])) ) : 'addons';
+
+$addon_tabs = array(
+	'addons' => array(
+		'tab_name' => __( 'Pro Add-ons', 'caddy' ),
+		'tab_icon' => 'dashicons dashicons-admin-plugins',
+	),
+);
+/**
+ * Filters the add-on tab names.
+ *
+ * @param array $addon_tabs Caddy tab names.
+ *
+ * @since 1.4.0
+ *
+ */
+$addon_tab_name = apply_filters( 'caddy_add_on_tab_names', $addon_tabs );
+
+$addon_sections       = array(
+	'' => __( 'Add-ons', 'caddy' ),
+);
+$caddy_addon_sections = apply_filters( 'caddy_get_addons_sections', $addon_sections );
+
+?>
+
+<div class="wrap">
+	<?php do_action( 'caddy_admin_header' ); ?>
+	<h2 class="nav-tab-wrapper">
+		<?php
+		foreach ( $addon_tab_name as $key => $value ) {
+			$active_tab_class = ( $key == $addon_tab ) ? ' nav-tab-active' : '';
+			?>
+			<a class="nav-tab<?php echo esc_attr( $active_tab_class ); ?>" href="?page=caddy-addons&amp;tab=<?php echo esc_attr( $key ); ?>"><i class="<?php echo esc_attr( $value['tab_icon'] ); ?>"></i>&nbsp;<?php echo esc_html( $value['tab_name'] ); ?></a>
+		<?php } ?>
+	</h2>
+	<?php do_action( 'cc_addons_html' ); // Display add-ons html ?>
+</div>

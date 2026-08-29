@@ -1,0 +1,20 @@
+@use "./variables" as variables;
+
+.woocommerce span.onsale,
+.elementor-products-grid ul.products.elementor-grid li.product span.onsale,
+.woocommerce ul.products li.product span.onsale {
+	background-color: var(--ehc-sale-background-color);
+	border-radius: 0;
+	color: var(--ehc-sale-color);
+	display: inline-flex;
+	font-size: variables.$font-size-14;
+	font-weight: variables.$font-weight-400;
+	inset-inline-start: 0;
+	left: unset;
+	line-height: variables.$font-size-16;
+	min-height: unset;
+	min-width: unset;
+	padding: 0.5em 1em;
+	text-transform: uppercase;
+	top: variables.$spacing-10;
+}

@@ -1,0 +1,28 @@
+@use "./variables" as variables;
+
+input[type=text],
+input[type=date],
+input[type=email],
+input[type=number],
+input[type=password],
+input[type=search],
+input[type=tel],
+input[type=url],
+select,
+textarea,
+#wc-block-components-totals-coupon__input-coupon {
+	border-radius: 0;
+	border: 1px solid variables.$color-black;
+	padding: variables.$spacing-12 variables.$spacing-24;
+}
+
+.woocommerce form .form-row .input-text {
+	border-radius: 0;	
+}
+
+select {
+	appearance: none;
+	background-image: url('data:image/svg+xml;utf8,<svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.5 0.5L6 5.5L11.5 0.5" stroke="black"/></svg>');
+	background-repeat: no-repeat;
+	background-position: right variables.$spacing-12 center;
+}

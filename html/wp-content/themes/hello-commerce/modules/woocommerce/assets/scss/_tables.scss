@@ -1,0 +1,75 @@
+@use "./variables" as variables;
+
+.woocommerce table:is(.shop_table, .shop_attributes) {
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+	border: 1px solid variables.$color-grey-100;
+	border-radius: 0;
+	background-color: variables.$color-white;
+
+	& th {
+		text-align: left;
+		background-color: variables.$color-grey-50;
+		border: 0;
+		border-inline: 0;
+		border-bottom: 2px solid variables.$color-grey-100;
+		border-radius: 0;
+		font-weight: variables.$font-weight-700;
+		line-height: variables.$font-size-18;
+		padding: variables.$spacing-18;
+		vertical-align: middle;
+	}
+
+	& thead:first-child tr:first-child th {
+		border-block-start: 0;
+	}
+
+	& > tbody {
+		& > tr:nth-child(odd) > td,
+		& > tr:nth-child(odd) > th {
+			background: none;
+		}
+
+		& > tr > td {
+			border-bottom: 2px solid variables.$color-grey-100;
+			padding: variables.$spacing-18;
+
+		}
+
+		& > tr:last-child > td,
+		& > tr:last-child > th {
+			border-bottom: 0;
+		}
+	}
+
+	& > tfoot {
+		& th,
+		& td {
+			background-color: variables.$color-grey-50;
+			border: 0;
+			padding: variables.$spacing-16;
+		}
+
+		& > tr {
+			border-bottom: 2px solid variables.$color-grey-100;
+
+			&:last-child {
+				border-bottom: 0;
+			}
+		}
+	}
+
+	td {
+		border-bottom: 2px solid variables.$color-grey-100;
+		border-inline: 0;
+		padding: variables.$spacing-18;
+		font-style: normal;
+		line-height: variables.$font-size-18;
+		text-align: left;
+	}
+
+	tr:last-child td {
+		border-bottom: 0;
+	}
+}

@@ -1,0 +1,966 @@
+# Copyright (C) 2025 Tribe Interactive
+# This file is distributed under the GPL-2.0+.
+msgid ""
+msgstr ""
+"Project-Id-Version: Caddy - Smart Side Cart for WooCommerce 2.1.2\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/caddy\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-03-09T19:34:16+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: caddy\n"
+
+#. Plugin Name of the plugin
+#: caddy.php
+msgid "Caddy - Smart Side Cart for WooCommerce"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+#: caddy.php
+msgid "https://usecaddy.com"
+msgstr ""
+
+#. Description of the plugin
+#: caddy.php
+msgid "A high performance, conversion-boosting side cart for your WooCommerce store that improves the shopping experience & helps grow your sales."
+msgstr ""
+
+#. Author of the plugin
+#: caddy.php
+msgid "Tribe Interactive"
+msgstr ""
+
+#: admin/class-caddy-admin.php:115
+#: admin/class-caddy-admin.php:116
+#: public/partials/caddy-public-cart.php:306
+#: public/partials/caddy-public-saves.php:125
+msgid "Caddy"
+msgstr ""
+
+#: admin/class-caddy-admin.php:125
+#: admin/class-caddy-admin.php:126
+#: admin/class-caddy-admin.php:302
+#: admin/partials/caddy-admin-display.php:23
+#: caddy.php:146
+msgid "Settings"
+msgstr ""
+
+#: admin/class-caddy-admin.php:132
+#: admin/class-caddy-admin.php:133
+#: admin/partials/caddy-admin-addons-page.php:38
+msgid "Add-ons"
+msgstr ""
+
+#: admin/class-caddy-admin.php:206
+#: admin/class-caddy-admin.php:319
+msgid "Upgrade to Pro"
+msgstr ""
+
+#: admin/class-caddy-admin.php:207
+msgid "Unlock powerful new features:"
+msgstr ""
+
+#: admin/class-caddy-admin.php:209
+msgid "Analytics dashboard"
+msgstr ""
+
+#: admin/class-caddy-admin.php:210
+msgid "Cart & conversion tracking"
+msgstr ""
+
+#: admin/class-caddy-admin.php:211
+msgid "Multi-tier rewards"
+msgstr ""
+
+#: admin/class-caddy-admin.php:212
+msgid "Cart announcement bar"
+msgstr ""
+
+#: admin/class-caddy-admin.php:213
+msgid "Custom recommendations"
+msgstr ""
+
+#: admin/class-caddy-admin.php:214
+msgid "Automated workflows"
+msgstr ""
+
+#: admin/class-caddy-admin.php:215
+msgid "Total design control"
+msgstr ""
+
+#: admin/class-caddy-admin.php:216
+msgid "Bubble positioning options"
+msgstr ""
+
+#: admin/class-caddy-admin.php:217
+msgid "Cart notices, add-ons & more"
+msgstr ""
+
+#: admin/class-caddy-admin.php:219
+msgid "Use promo code \"PRO20\" to get 20% off for a limited time."
+msgstr ""
+
+#: admin/class-caddy-admin.php:224
+msgid "Get Pro Edition"
+msgstr ""
+
+#: admin/class-caddy-admin.php:253
+#: admin/partials/caddy-admin-styles-page.php:49
+#: admin/partials/settings/free-shipping-meter.php:89
+#: admin/partials/settings/general.php:130
+#: admin/partials/settings/recommendations.php:64
+msgid "Caddy Pro"
+msgstr ""
+
+#: admin/class-caddy-admin.php:254
+msgid "Pro unlocks powerful customization features for Caddy including an in-cart \"offers.\" tab, exclusion rules for recommendations and free shipping meter, color style management, positioning and more."
+msgstr ""
+
+#: admin/class-caddy-admin.php:255
+msgid "Get Pro"
+msgstr ""
+
+#: admin/class-caddy-admin.php:262
+msgid "Klaviyo Integration"
+msgstr ""
+
+#: admin/class-caddy-admin.php:263
+msgid "Capture emails directly in the cart and track cart actions with Klaviyo."
+msgstr ""
+
+#: admin/class-caddy-admin.php:264
+msgid "Get Add-on"
+msgstr ""
+
+#: admin/class-caddy-admin.php:283
+msgid "Activated"
+msgstr ""
+
+#: admin/class-caddy-admin.php:285
+msgid "Installed"
+msgstr ""
+
+#: admin/class-caddy-admin.php:303
+msgid "Documentation"
+msgstr ""
+
+#: admin/class-caddy-admin.php:304
+msgid "Leave a Review"
+msgstr ""
+
+#: admin/class-caddy-admin.php:305
+msgid "Get Add-ons"
+msgstr ""
+
+#: admin/class-caddy-admin.php:311
+msgid "Licenses"
+msgstr ""
+
+#: admin/class-caddy-admin.php:339
+msgid "We are sad to see you go :( If you have a moment, please let us know how we can improve"
+msgstr ""
+
+#: admin/class-caddy-admin.php:348
+msgid "It's missing a specific feature"
+msgstr ""
+
+#: admin/class-caddy-admin.php:355
+msgid "It's not working"
+msgstr ""
+
+#: admin/class-caddy-admin.php:362
+msgid "It's not what I was looking for"
+msgstr ""
+
+#: admin/class-caddy-admin.php:369
+msgid "It did not work as I expected"
+msgstr ""
+
+#: admin/class-caddy-admin.php:376
+msgid "I found a better plugin"
+msgstr ""
+
+#: admin/class-caddy-admin.php:383
+msgid "It's a temporary deactivation"
+msgstr ""
+
+#: admin/class-caddy-admin.php:390
+msgid "Something else"
+msgstr ""
+
+#: admin/class-caddy-admin.php:396
+msgid "Please explain"
+msgstr ""
+
+#: admin/class-caddy-admin.php:398
+msgid "I would like someone to contact me and help resolve my issue"
+msgstr ""
+
+#: admin/class-caddy-admin.php:402
+msgid "By submitting this you're allowing Caddy to collect and send some basic site data to troubleshoot problems & make product improvements. Read our "
+msgstr ""
+
+#: admin/class-caddy-admin.php:404
+msgid " for more info."
+msgstr ""
+
+#: admin/class-caddy-admin.php:413
+msgid "Skip and Deactivate"
+msgstr ""
+
+#: admin/class-caddy-admin.php:415
+msgid "Cancel"
+msgstr ""
+
+#: admin/class-caddy-admin.php:416
+msgid "Submit and Deactivate"
+msgstr ""
+
+#: admin/class-caddy-admin.php:445
+msgid "Caddy Deactivation Survey Response"
+msgstr ""
+
+#. translators: %s: Website URL
+#: admin/class-caddy-admin.php:448
+msgid "WordPress website URL: %s"
+msgstr ""
+
+#. translators: %s: WordPress version number
+#: admin/class-caddy-admin.php:450
+msgid "WordPress version: %s"
+msgstr ""
+
+#. translators: %s: Plugin version number
+#: admin/class-caddy-admin.php:452
+msgid "The plugin version: %s"
+msgstr ""
+
+#. translators: %s: Selected reason from deactivation survey
+#: admin/class-caddy-admin.php:454
+msgid "Selected Deactivation Reason: %s"
+msgstr ""
+
+#. translators: %s: Detailed reason text from deactivation survey
+#: admin/class-caddy-admin.php:456
+msgid "Deactivation Reason Text: %s"
+msgstr ""
+
+#. translators: %s: User's full name
+#: admin/class-caddy-admin.php:463
+msgid "User display name: %s"
+msgstr ""
+
+#. translators: %s: User's email address
+#: admin/class-caddy-admin.php:465
+msgid "User email: %s"
+msgstr ""
+
+#: admin/class-caddy-admin.php:491
+#: admin/partials/settings/recommendations.php:50
+msgid "Caddy Recommendations"
+msgstr ""
+
+#: admin/class-caddy-admin.php:492
+msgid "Search for a product&hellip;"
+msgstr ""
+
+#: admin/class-caddy-admin.php:506
+msgid "These products will be shown as recommendations in the Caddy cart for this product."
+msgstr ""
+
+#: admin/partials/caddy-admin-addons-page.php:23
+msgid "Pro Add-ons"
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:27
+msgid "Styling"
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:48
+msgid "Settings saved."
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:48
+msgid "If you're using any caching plugins please be sure to "
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:49
+msgid "clear your cache. "
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:75
+msgid "Woohoo "
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:75
+msgid "! You've just upgraded your shopping cart."
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:79
+msgid "To get started, we recommend reading through our"
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:81
+msgid "getting started"
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:82
+msgid "help docs. For tips on growing your store, check out and subscribe to our"
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:84
+msgid "blog"
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:85
+msgid "If you have any questions or need help, don't hesitate to"
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:87
+msgid "reach out"
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:88
+msgid "to us"
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:89
+msgid "- The Caddy Crew"
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:104
+msgid "Join our email list and get 40% off a Pro license"
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:120
+msgid "I agree with the "
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:122
+msgid "Terms"
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:123
+msgid " &amp; "
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:125
+msgid "Privacy Policy"
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:136
+msgid "Subscribe"
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:160
+msgid "More Premium Plugins"
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:166
+msgid "Klaviyo ToolKit"
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:167
+msgid "Improve your WooCommerce email marketing with Klaviyo."
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:174
+msgid "RetentionKit"
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:175
+msgid "Learn why users cancel their WC subscriptions with exit surveys, offer renewal discounts to stay and more."
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:181
+msgid "Caddy Quick Links"
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:184
+msgid "Read the documentation"
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:187
+msgid "Register / Log into your account"
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:190
+msgid "Leave a review"
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:193
+msgid "Contact support"
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:202
+msgid "Made with"
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:202
+#: public/partials/caddy-public-cart.php:304
+#: public/partials/caddy-public-saves.php:123
+msgid "by"
+msgstr ""
+
+#: admin/partials/caddy-admin-display.php:203
+msgid "TRIBE"
+msgstr ""
+
+#: admin/partials/caddy-admin-settings-page.php:39
+#: admin/partials/settings/general.php:30
+msgid "General"
+msgstr ""
+
+#: admin/partials/caddy-admin-settings-page.php:46
+#: admin/partials/settings/free-shipping-meter.php:26
+msgid "Free Shipping Meter"
+msgstr ""
+
+#: admin/partials/caddy-admin-settings-page.php:53
+msgid "Recommendations"
+msgstr ""
+
+#: admin/partials/caddy-admin-settings-page.php:59
+msgid "Display"
+msgstr ""
+
+#: admin/partials/caddy-admin-settings-page.php:66
+#: admin/partials/settings/offers.php:19
+msgid "Offers"
+msgstr ""
+
+#: admin/partials/caddy-admin-settings-page.php:73
+#: admin/partials/settings/save-for-later.php:19
+msgid "Save for Later"
+msgstr ""
+
+#: admin/partials/caddy-admin-settings-page.php:80
+#: admin/partials/settings/welcome.php:19
+msgid "Welcome Message"
+msgstr ""
+
+#: admin/partials/caddy-admin-settings-page.php:87
+#: admin/partials/settings/announcement-bar.php:19
+msgid "Announcement Bar"
+msgstr ""
+
+#: admin/partials/caddy-admin-settings-page.php:94
+msgid "Rewards Meter"
+msgstr ""
+
+#: admin/partials/caddy-admin-styles-page.php:26
+msgid "Custom Styles"
+msgstr ""
+
+#: admin/partials/caddy-admin-styles-page.php:27
+msgid "General style customization options."
+msgstr ""
+
+#: admin/partials/caddy-admin-styles-page.php:34
+msgid "Custom CSS"
+msgstr ""
+
+#: admin/partials/caddy-admin-styles-page.php:48
+msgid "Unlock 7 different cart icons, change bubble position, set 15+ custom color options & more with "
+msgstr ""
+
+#: admin/partials/settings/announcement-bar.php:24
+msgid "Unlock an Announcement Bar with Caddy Pro"
+msgstr ""
+
+#: admin/partials/settings/announcement-bar.php:25
+msgid "Display a targeted announcement bar to shoppers. Plus:"
+msgstr ""
+
+#: admin/partials/settings/announcement-bar.php:27
+#: admin/partials/settings/display.php:27
+#: admin/partials/settings/offers.php:27
+#: admin/partials/settings/rewards-meter.php:31
+#: admin/partials/settings/save-for-later.php:27
+#: admin/partials/settings/welcome.php:27
+msgid "Analytics dashboard."
+msgstr ""
+
+#: admin/partials/settings/announcement-bar.php:28
+#: admin/partials/settings/display.php:28
+#: admin/partials/settings/offers.php:28
+#: admin/partials/settings/rewards-meter.php:32
+#: admin/partials/settings/save-for-later.php:28
+#: admin/partials/settings/welcome.php:28
+msgid "Cart & conversion tracking."
+msgstr ""
+
+#: admin/partials/settings/announcement-bar.php:29
+#: admin/partials/settings/display.php:29
+#: admin/partials/settings/offers.php:29
+#: admin/partials/settings/rewards-meter.php:33
+#: admin/partials/settings/save-for-later.php:29
+#: admin/partials/settings/welcome.php:29
+msgid "Custom recommendation logic."
+msgstr ""
+
+#: admin/partials/settings/announcement-bar.php:30
+#: admin/partials/settings/display.php:30
+#: admin/partials/settings/offers.php:30
+#: admin/partials/settings/rewards-meter.php:34
+#: admin/partials/settings/save-for-later.php:30
+#: admin/partials/settings/welcome.php:30
+msgid "Targeted workflows."
+msgstr ""
+
+#: admin/partials/settings/announcement-bar.php:31
+#: admin/partials/settings/display.php:31
+#: admin/partials/settings/offers.php:31
+#: admin/partials/settings/rewards-meter.php:35
+#: admin/partials/settings/save-for-later.php:31
+#: admin/partials/settings/welcome.php:31
+msgid "Total design control."
+msgstr ""
+
+#: admin/partials/settings/announcement-bar.php:32
+#: admin/partials/settings/display.php:32
+#: admin/partials/settings/offers.php:32
+#: admin/partials/settings/rewards-meter.php:36
+#: admin/partials/settings/save-for-later.php:32
+#: admin/partials/settings/welcome.php:32
+msgid "Bubble positioning options."
+msgstr ""
+
+#: admin/partials/settings/announcement-bar.php:33
+#: admin/partials/settings/display.php:33
+#: admin/partials/settings/offers.php:33
+#: admin/partials/settings/rewards-meter.php:37
+#: admin/partials/settings/save-for-later.php:33
+#: admin/partials/settings/welcome.php:33
+msgid "Cart notices, add-ons & more."
+msgstr ""
+
+#: admin/partials/settings/announcement-bar.php:35
+#: admin/partials/settings/display.php:35
+#: admin/partials/settings/offers.php:35
+#: admin/partials/settings/rewards-meter.php:39
+#: admin/partials/settings/save-for-later.php:35
+#: admin/partials/settings/welcome.php:35
+msgid "Use promo code \"PREMIUM20\" to get 20% off for a limited time."
+msgstr ""
+
+#: admin/partials/settings/announcement-bar.php:40
+#: admin/partials/settings/display.php:40
+#: admin/partials/settings/offers.php:40
+#: admin/partials/settings/rewards-meter.php:44
+#: admin/partials/settings/save-for-later.php:40
+#: admin/partials/settings/welcome.php:40
+msgid "Get Caddy Pro"
+msgstr ""
+
+#: admin/partials/settings/display.php:19
+msgid "Display Behavior"
+msgstr ""
+
+#: admin/partials/settings/display.php:24
+msgid "Unlock a Display Settings with Caddy Pro"
+msgstr ""
+
+#: admin/partials/settings/display.php:25
+msgid "Change the location of the cart bubble, cart drawer behaviour, and more. Plus:"
+msgstr ""
+
+#: admin/partials/settings/free-shipping-meter.php:27
+msgid "Displays a meter in Caddy that shows the total amount required for free shipping."
+msgstr ""
+
+#: admin/partials/settings/free-shipping-meter.php:28
+msgid "This requires a free shipping method configured within your WooCommerce"
+msgstr ""
+
+#: admin/partials/settings/free-shipping-meter.php:28
+#: admin/partials/settings/rewards-meter.php:23
+msgid "shipping settings"
+msgstr ""
+
+#: admin/partials/settings/free-shipping-meter.php:35
+msgid "Trigger amount"
+msgstr ""
+
+#: admin/partials/settings/free-shipping-meter.php:39
+msgid "Set an amount to enable the free shipping meter."
+msgstr ""
+
+#: admin/partials/settings/free-shipping-meter.php:40
+msgid "This amount must match the \"Minimum order amount\" configured within your WooCommerce"
+msgstr ""
+
+#: admin/partials/settings/free-shipping-meter.php:41
+msgid "shipping settings."
+msgstr ""
+
+#: admin/partials/settings/free-shipping-meter.php:42
+msgid "Leave blank to disable."
+msgstr ""
+
+#: admin/partials/settings/free-shipping-meter.php:49
+msgid "Include taxes in the shipping calculation"
+msgstr ""
+
+#: admin/partials/settings/free-shipping-meter.php:63
+msgid "Free shipping country"
+msgstr ""
+
+#: admin/partials/settings/free-shipping-meter.php:89
+msgid "Unlock free shipping meter exlusions & more with "
+msgstr ""
+
+#: admin/partials/settings/general.php:36
+msgid "Powered by Caddy branding"
+msgstr ""
+
+#: admin/partials/settings/general.php:43
+msgid "We appreciate the "
+msgstr ""
+
+#: admin/partials/settings/general.php:45
+msgid " and support!"
+msgstr ""
+
+#: admin/partials/settings/general.php:53
+msgid "Caddy Affiliate ID"
+msgstr ""
+
+#: admin/partials/settings/general.php:57
+msgid "Enter money from our Caddy branding link!"
+msgstr ""
+
+#: admin/partials/settings/general.php:57
+msgid "Click here"
+msgstr ""
+
+#: admin/partials/settings/general.php:57
+msgid "to sign up"
+msgstr ""
+
+#: admin/partials/settings/general.php:64
+msgid "Menu Widgets"
+msgstr ""
+
+#: admin/partials/settings/general.php:65
+msgid "Enable the cart and saves menu widgets."
+msgstr ""
+
+#: admin/partials/settings/general.php:70
+msgid "Add Cart Widget to Menu"
+msgstr ""
+
+#: admin/partials/settings/general.php:87
+msgid "Cart Widget Shortcode"
+msgstr ""
+
+#: admin/partials/settings/general.php:94
+msgid "Copy the cart shortcode and embed it anywhere."
+msgstr ""
+
+#: admin/partials/settings/general.php:99
+msgid "Add Saves Widget to Menu"
+msgstr ""
+
+#: admin/partials/settings/general.php:114
+msgid "Saves Widget Shortcode"
+msgstr ""
+
+#: admin/partials/settings/general.php:121
+msgid "Copy the saves shortcode and embed it anywhere."
+msgstr ""
+
+#: admin/partials/settings/general.php:130
+msgid "Unlock custom messaging, bubble positioning, free shipping meter exlusions, notices & more with "
+msgstr ""
+
+#: admin/partials/settings/offers.php:20
+msgid "Configuration of coupons within the \"offers\" tab of Caddy that shoppers can apply to their cart."
+msgstr ""
+
+#: admin/partials/settings/offers.php:24
+msgid "Unlock offers with Caddy Pro"
+msgstr ""
+
+#: admin/partials/settings/offers.php:25
+msgid "Display targeted in-cart offers to shoppers. Plus:"
+msgstr ""
+
+#: admin/partials/settings/recommendations.php:25
+msgid "Product Recommendations"
+msgstr ""
+
+#: admin/partials/settings/recommendations.php:26
+msgid "Display targeted product recommendations every time a product is added to the cart."
+msgstr ""
+
+#: admin/partials/settings/recommendations.php:32
+msgid "Enable recommendations"
+msgstr ""
+
+#: admin/partials/settings/recommendations.php:45
+msgid "Recommendation Type"
+msgstr ""
+
+#: admin/partials/settings/recommendations.php:49
+msgid "-- Select recommendation type --"
+msgstr ""
+
+#: admin/partials/settings/recommendations.php:51
+msgid "Product Cross-sells"
+msgstr ""
+
+#: admin/partials/settings/recommendations.php:52
+msgid "Product Upsells"
+msgstr ""
+
+#: admin/partials/settings/recommendations.php:64
+msgid "Unlock recommendation fallbacks, customize recommendation text, set exclusions & more with "
+msgstr ""
+
+#: admin/partials/settings/rewards-meter.php:19
+msgid "Multi-Tier Rewards Meter"
+msgstr ""
+
+#: admin/partials/settings/rewards-meter.php:23
+msgid "Important: Free shipping rewards are only available if a free shipping method is configured within your WooCommerce"
+msgstr ""
+
+#: admin/partials/settings/rewards-meter.php:28
+msgid "Unlock a Multi-Tier Rewards Meter with Caddy Pro"
+msgstr ""
+
+#: admin/partials/settings/rewards-meter.php:29
+msgid "Offer free shipping, gifts and discounts to shoppers based on their order total. Plus:"
+msgstr ""
+
+#: admin/partials/settings/save-for-later.php:20
+msgid "Customize the save for later features in your store."
+msgstr ""
+
+#: admin/partials/settings/save-for-later.php:24
+msgid "Unlock Save for Later with Caddy Pro"
+msgstr ""
+
+#: admin/partials/settings/save-for-later.php:25
+msgid "Allow shoppers to save items for later. Plus:"
+msgstr ""
+
+#: admin/partials/settings/welcome.php:20
+msgid "Customize the welcome message within the Caddy front-end."
+msgstr ""
+
+#: admin/partials/settings/welcome.php:24
+msgid "Unlock Custom Welcome Messages with Caddy Pro"
+msgstr ""
+
+#: admin/partials/settings/welcome.php:25
+msgid "Customize the welcome message within the Caddy front-end. Plus:"
+msgstr ""
+
+#: caddy.php:65
+msgid "The WooCommerce plugin needs to be installed and activated in order for Caddy to work properly."
+msgstr ""
+
+#: caddy.php:65
+msgid "Please activate WooCommerce to enable Caddy."
+msgstr ""
+
+#: includes/class-caddy-cart-widget.php:15
+msgid "Caddy Cart"
+msgstr ""
+
+#: includes/class-caddy-cart-widget.php:16
+msgid "Caddy cart widget"
+msgstr ""
+
+#: includes/class-caddy-cart-widget.php:47
+#: public/class-caddy-public.php:721
+msgid "Cart Items"
+msgstr ""
+
+#: includes/class-caddy-cart-widget.php:66
+#: includes/class-caddy-saved-items-widget.php:55
+msgid "New title"
+msgstr ""
+
+#: includes/class-caddy-cart-widget.php:67
+msgid "Cart"
+msgstr ""
+
+#: includes/class-caddy-saved-items-widget.php:15
+msgid "Caddy Saved List"
+msgstr ""
+
+#: includes/class-caddy-saved-items-widget.php:16
+msgid "Caddy saved list widget"
+msgstr ""
+
+#: includes/class-caddy-saved-items-widget.php:38
+#: includes/class-caddy-saved-items-widget.php:56
+#: public/class-caddy-public.php:683
+#: public/partials/caddy-public-window.php:32
+msgid "Saved Items"
+msgstr ""
+
+#. translators: %1$s: product name, %2$s: available stock quantity
+#: public/class-caddy-public.php:334
+#: public/class-caddy-public.php:451
+msgid "Sorry, we do not have enough \"%1$s\" in stock to fulfill your order (%2$s available). We apologize for any inconvenience caused."
+msgstr ""
+
+#: public/class-caddy-public.php:774
+msgid "Saved"
+msgstr ""
+
+#: public/class-caddy-public.php:782
+#: public/class-caddy-public.php:1165
+#: public/class-caddy-public.php:1168
+msgid "Save for later"
+msgstr ""
+
+#: public/class-caddy-public.php:918
+msgid "Congrats, you've activated"
+msgstr ""
+
+#: public/class-caddy-public.php:919
+#: public/class-caddy-public.php:944
+msgid "free"
+msgstr ""
+
+#: public/class-caddy-public.php:921
+#: public/class-caddy-public.php:946
+msgid "shipping"
+msgstr ""
+
+#: public/class-caddy-public.php:940
+msgid "Spend"
+msgstr ""
+
+#: public/class-caddy-public.php:942
+msgid "more"
+msgstr ""
+
+#: public/class-caddy-public.php:943
+msgid "to get"
+msgstr ""
+
+#: public/class-caddy-public.php:1061
+msgid "Gift Reward"
+msgstr ""
+
+#: public/class-caddy-public.php:1097
+msgid "Free"
+msgstr ""
+
+#. translators: %s: discount amount (formatted price)
+#: public/class-caddy-public.php:1131
+msgid "(Save %s)"
+msgstr ""
+
+#: public/class-caddy-public.php:1184
+#: public/partials/caddy-public-saves.php:84
+msgid "Remove this item"
+msgstr ""
+
+#: public/class-caddy-public.php:1270
+msgid "Saves"
+msgstr ""
+
+#: public/partials/caddy-public-cart.php:127
+msgid "Your Cart is Empty!"
+msgstr ""
+
+#: public/partials/caddy-public-cart.php:130
+msgid "You haven't added any items to your cart yet, but you do have products in your saved list."
+msgstr ""
+
+#: public/partials/caddy-public-cart.php:131
+msgid "View Saved Items"
+msgstr ""
+
+#: public/partials/caddy-public-cart.php:133
+msgid "It looks like you haven't added any items to your cart yet."
+msgstr ""
+
+#: public/partials/caddy-public-cart.php:134
+#: public/partials/caddy-public-saves.php:98
+msgid "Browse Products"
+msgstr ""
+
+#: public/partials/caddy-public-cart.php:162
+msgid "Apply a promo code"
+msgstr ""
+
+#: public/partials/caddy-public-cart.php:170
+msgid "Promo code"
+msgstr ""
+
+#: public/partials/caddy-public-cart.php:171
+msgid "Apply"
+msgstr ""
+
+#: public/partials/caddy-public-cart.php:209
+msgid "-"
+msgstr ""
+
+#: public/partials/caddy-public-cart.php:220
+msgid "Subtotal - "
+msgstr ""
+
+#: public/partials/caddy-public-cart.php:221
+msgid "item"
+msgid_plural "items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: public/partials/caddy-public-cart.php:223
+msgid "Shipping &amp; taxes calculated at checkout."
+msgstr ""
+
+#: public/partials/caddy-public-cart.php:265
+msgid "Checkout Now"
+msgstr ""
+
+#: public/partials/caddy-public-cart.php:303
+#: public/partials/caddy-public-saves.php:122
+msgid "Powered"
+msgstr ""
+
+#: public/partials/caddy-public-recommendations.php:86
+msgid "We think you might also like..."
+msgstr ""
+
+#: public/partials/caddy-public-saves.php:63
+msgid "Save "
+msgstr ""
+
+#: public/partials/caddy-public-saves.php:72
+#: public/partials/caddy-public-saves.php:74
+msgid "Move to cart"
+msgstr ""
+
+#: public/partials/caddy-public-saves.php:95
+msgid "You haven't saved any items yet!"
+msgstr ""
+
+#: public/partials/caddy-public-saves.php:97
+msgid "You can save your shopping cart items for later here."
+msgstr ""
+
+#: public/partials/caddy-public-saves.php:100
+msgid "You must be logged into an account in order to save items."
+msgstr ""
+
+#: public/partials/caddy-public-saves.php:102
+msgid "Login or Register"
+msgstr ""
+
+#: public/partials/caddy-public-window.php:30
+msgid "Your Cart"
+msgstr ""
