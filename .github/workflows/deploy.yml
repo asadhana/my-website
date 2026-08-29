@@ -1,0 +1,60 @@
+name: Deploy to Ubuntu Server
+
+on:
+  workflow_dispatch:
+    inputs:
+      deploy_path:
+        description: 'Remote path to deploy to (overrides REMOTE_PATH secret)'
+        required: false
+        default: ''
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup SSH agent
+        uses: webfactory/ssh-agent@v0.8.2
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Add remote host to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          touch ~/.ssh/known_hosts
+          PORT=${{ secrets.REMOTE_PORT }}
+          if [ -z "$PORT" ]; then PORT=22; fi
+          ssh-keyscan -p "$PORT" -H "${{ secrets.REMOTE_HOST }}" >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+
+      - name: Sync html/ to server using rsync over SSH
+        env:
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
+          REMOTE_PATH: ${{ secrets.REMOTE_PATH }}
+        run: |
+          set -e
+          # Use REMOTE_PORT or default 22
+          PORT=${REMOTE_PORT:-22}
+          # Allow workflow_dispatch input to override default remote path
+          TARGET_PATH="${{ github.event.inputs.deploy_path }}"
+          if [ -z "$TARGET_PATH" ]; then TARGET_PATH="$REMOTE_PATH"; fi
+          if [ -z "$TARGET_PATH" ]; then echo "REMOTE_PATH not set and no input provided; aborting." && exit 1; fi
+          echo "Deploying html/ -> ${REMOTE_USER}@${REMOTE_HOST}:${TARGET_PATH} (port $PORT)"
+          # Sync only the html/ directory contents. Exclude wp-config.php and uploads if desired.
+          # Use --delete to mirror; remove if you don't want deletions.
+          rsync -avz --delete --exclude='.git' --exclude='.github' --exclude='html/wp-config.php' -e "ssh -p $PORT" ./html/ ${REMOTE_USER}@${REMOTE_HOST}:"${TARGET_PATH}"
+
+      - name: Optional: Run post-deploy commands on server
+        if: ${{ secrets.POST_DEPLOY_COMMANDS != '#' }}
+        env:
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
+        run: |
+          PORT=${REMOTE_PORT:-22}
+          echo "Running POST_DEPLOY_COMMANDS on ${REMOTE_HOST}"
+          ssh -p "$PORT" ${REMOTE_USER}@${REMOTE_HOST} "${{ secrets.POST_DEPLOY_COMMANDS }}"
